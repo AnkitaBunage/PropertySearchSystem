@@ -8,7 +8,7 @@ import { SignupComponent } from './signup/signup.component';
 import { UserService } from '../user.service';
 import { FormsModule } from '@angular/forms'; 
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NormalUserComponent } from '../normal-user/normal-user.component';
 import { AdminComponent } from '../admin/admin.component';
 //import { AppComponent } from './app.component';
@@ -33,8 +33,7 @@ const routes:Route []= [
     RouterModule.forRoot(routes),
     RouterModule.forChild(routes),
     HttpClientModule,
-    FormsModule,ReactiveFormsModule,
-    NgbModule
+    FormsModule,ReactiveFormsModule
   ],
   providers:[UserService],
   //bootstrap: [AppComponent],

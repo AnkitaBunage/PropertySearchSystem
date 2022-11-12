@@ -13,16 +13,42 @@ import javax.validation.constraints.Size;
 @Table(	name = "users", 
 		uniqueConstraints = { 
 			@UniqueConstraint(columnNames = "username"),
-			@UniqueConstraint(columnNames = "email"),
-			@UniqueConstraint(columnNames = "userId")
+			@UniqueConstraint(columnNames = "email")
+			
 		})
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private int userId;
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+//	private int userId;
+	 
+    @NotBlank
+    @Size(min = 2, max = 20)
+    private String firstname;
+    
+    @NotBlank
+    @Size(min = 2, max = 20)
+    private String lastname;
+    
+	
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
 
 	@NotBlank
 	@Size(max = 20)
@@ -30,7 +56,7 @@ public class User {
 
 	@NotBlank
 	@Size(max = 50)
-	@Email
+
 	private String email;
 
 	@NotBlank
@@ -50,6 +76,29 @@ public class User {
 		this.username = username;
 		this.email = email;
 		this.password = password;
+	}
+
+	public User(String username, String email,String firstname,String lastname, String password) {
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+	}
+
+	
+	
+	public User(Long id, @NotBlank @Size(min = 2, max = 20) String firstname,
+			@NotBlank @Size(min = 2, max = 20) String lastname, @NotBlank @Size(max = 20) String username,
+			@NotBlank @Size(max = 50) String email, @NotBlank @Size(max = 120) String password, Set<Roles> roles) {
+		super();
+		this.id = id;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.roles = roles;
 	}
 
 	public Long getId() {

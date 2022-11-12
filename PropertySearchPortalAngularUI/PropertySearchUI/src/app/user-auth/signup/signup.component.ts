@@ -17,10 +17,12 @@ export class SignupComponent implements OnInit {
     email:"aa@gmail.com",
     role:[ "" ]
   }
+  submitted=false;
+
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
-  roles : RoleData[] = [
-    {roleId : 1, roleName : "Admin"},
-    {roleId : 2, roleName : "User"}
+  roleDetails : RoleData[] = [
+    {roleId : 1, roleName : "ROLE_ADMIN"},
+    {roleId : 2, roleName : "ROLE_USER"}
   ];
   constructor(private userservice:UserService,private router:Router,private fb:FormBuilder) { 
     this.signup();
@@ -28,20 +30,33 @@ export class SignupComponent implements OnInit {
   RegisterDataModel: RegisterData = new RegisterData();
   ngOnInit(): void {
   }
-  
 
 signup(){
-  
-  const observable:Observable<any>=this.userservice.signup(this.user);
+  var _registerData = {
+    username: this.RegisterDataModel.username,
+    password: this.RegisterDataModel.password,
+    email:this.RegisterDataModel.email,
+    firstname:this.RegisterDataModel.firstname,
+    lastname:this.RegisterDataModel.lastname,
+    role:this.RegisterDataModel.role
+  };
+  this.submitted=true;
+  const observable:Observable<any>=this.userservice.signup(_registerData);
   observable.subscribe(
     (response:any)=>{
       console.log(response);
+      if(response.roles[0]=="ROLE_AUTHOR"){
+        this.router.navigate(['author']);
+      }
+      else if(response.roles[0]=="ROLE_READER"){
+        this.router.navigate(['reader']);
+      }
       
     },
     function(error){
       console.log("SignUp fails"+error);
     },
-    ()=>{this.router.navigate(['signin']);
+    ()=>{this.router.navigate(['login']);
   }
   )
 }

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.app.PropertySearchSystem.entity.User;
 
-
+import org.springframework.data.domain.Example;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {

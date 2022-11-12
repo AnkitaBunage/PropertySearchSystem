@@ -38,7 +38,13 @@ public class MessageResponse {
 	        this.timestamp = LocalDateTime.now();
 	        this.message = message;
 	        this.details = details;
+	        this.value=value;
 	    }
+
+		public MessageResponse(int value) {
+			// TODO Auto-generated constructor stub
+			this.value=value;
+		}
 
 		public HttpStatus getHttpStatus() {
 			return httpStatus;
