@@ -49,7 +49,9 @@ export class AdminComponent implements OnInit {
     ]
     
   uiResponse : any;
-  showTable: boolean =false
+  showTable: boolean =false;
+  totalLength:any;
+  page:number = 1;
   ngOnInit(): void {
   }
 searchProperty(){
@@ -60,6 +62,8 @@ searchProperty(){
       ownerFirstName:this.PropertyDataModel.ownerFirstName,
       ownerLastName:this.PropertyDataModel.ownerLastName
     };
+ 
+
     const observable:Observable<any>=this._service.searchProperty(_search);
     observable.subscribe(
       (response:any)=>{
@@ -70,7 +74,7 @@ searchProperty(){
         }
         this.uiResponse=response;
         this.showTable=true;
-
+        this.totalLength =response.length;
         //this.router.navigate(['']);
       },
       function(error){
@@ -133,5 +137,27 @@ searchProperty(){
   //     // }
      
   //   },res=>console.log(res));
+   }
+
+   deleteProperty(prop_id :any){
+    debugger;
+    
+    const observable:Observable<any>=this._service.deleteProperty(prop_id);
+    observable.subscribe(
+      (response:any)=>{
+        console.log(response);
+        //sessionStorage.setItem('credentials', JSON.stringify(response));
+        if(response.httpStatus=="CREATED"){
+          alert("Property details added successfully");
+        }
+        //this.router.navigate(['']);
+      },
+      function(error){
+        //alert("Something went wrong")
+        alert(error.message);
+      }
+    
+      )
+ 
    }
 }

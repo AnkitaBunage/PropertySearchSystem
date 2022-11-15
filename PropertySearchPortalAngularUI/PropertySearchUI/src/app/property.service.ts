@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class PropertyService {
+ 
 
   constructor(private http:HttpClient, private _router:Router) { }
   
@@ -30,6 +31,17 @@ export class PropertyService {
     const token: any = JSON.parse(credentials||'{}')['accessToken'];
 
     return this.http.post(this.BASE_URL+'addProperty',addProperty , {
+      headers: {
+        Authorization: 'Bearer ' 
+      }
+    })
+  }
+
+  deleteProperty(prop_id: any) {
+    const credentials = sessionStorage.getItem('credentials');
+    const token: any = JSON.parse(credentials||'{}')['accessToken'];
+
+    return this.http.post(this.BASE_URL+'addProperty' , {
       headers: {
         Authorization: 'Bearer ' 
       }

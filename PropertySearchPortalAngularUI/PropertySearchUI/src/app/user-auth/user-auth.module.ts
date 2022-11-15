@@ -11,12 +11,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NormalUserComponent } from '../normal-user/normal-user.component';
 import { AdminComponent } from '../admin/admin.component';
+import { EditPropertyComponent } from '../edit-property/edit-property.component';
 //import { AppComponent } from './app.component';
 const routes:Route []= [
   {path:'signup', component:SignupComponent},
   {path:'login', component:LoginComponent},
   {path:'normalUser', component:NormalUserComponent},
   {path:'admin', component:AdminComponent},
+  {path:'admin/edit/:propertyId',component:EditPropertyComponent}
 
 
 ];
