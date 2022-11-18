@@ -45,7 +45,7 @@ private String propertyAddress;
 	@JoinTable(	name = "property_owner", 
 				joinColumns = @JoinColumn(name = "property_id"), 
 				inverseJoinColumns = @JoinColumn(name = "owner_id"))
-	@JsonIgnore
+	//@JsonIgnore
 	private Set<Owner> owner = new HashSet<>();
 	
 	
@@ -62,7 +62,7 @@ private String propertyAddress;
 //	@JoinColumn(name = "tax", referencedColumnName = "id")
 	
 	@OneToOne
-	@JsonIgnore
+	//@JsonIgnore
 	private Tax tax;
 	
 	public Tax getTax() {

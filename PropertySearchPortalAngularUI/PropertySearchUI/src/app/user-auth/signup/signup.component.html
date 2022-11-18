@@ -82,7 +82,7 @@
                       <span class="input-group-text"> <i style="width: 80px;">Role</i> </span>
                   </div>
                    
-                  <select name="role" [(ngModel)]="RegisterDataModel.role">
+                  <select name="role" [(ngModel)]="RegisterDataModel.role" formControlName="RoleControl">
                               <option *ngFor="let p of roleDetails" [value]="p.roleName">{{p.roleName}}</option>
                             </select>
                             <span class="validspan" *ngIf="!RegisterDataModel.formUserGroup.controls['RoleControl'].valid && 

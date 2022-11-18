@@ -38,20 +38,13 @@ signup(){
     email:this.RegisterDataModel.email,
     firstname:this.RegisterDataModel.firstname,
     lastname:this.RegisterDataModel.lastname,
-    role:this.RegisterDataModel.role
+    role:[this.RegisterDataModel.role]
   };
   this.submitted=true;
   const observable:Observable<any>=this.userservice.signup(_registerData);
   observable.subscribe(
     (response:any)=>{
       console.log(response);
-      if(response.roles[0]=="ROLE_AUTHOR"){
-        this.router.navigate(['author']);
-      }
-      else if(response.roles[0]=="ROLE_READER"){
-        this.router.navigate(['reader']);
-      }
-      
     },
     function(error){
       console.log("SignUp fails"+error);

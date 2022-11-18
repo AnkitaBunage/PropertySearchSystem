@@ -147,8 +147,8 @@ searchProperty(){
       (response:any)=>{
         console.log(response);
         //sessionStorage.setItem('credentials', JSON.stringify(response));
-        if(response.httpStatus=="CREATED"){
-          alert("Property details added successfully");
+        if(response.httpStatus=="OK"){
+          alert("Property details deleted successfully");
         }
         //this.router.navigate(['']);
       },

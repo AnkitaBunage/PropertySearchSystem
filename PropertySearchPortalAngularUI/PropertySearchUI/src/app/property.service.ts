@@ -6,7 +6,8 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class PropertyService {
- 
+
+  
 
   constructor(private http:HttpClient, private _router:Router) { }
   
@@ -23,34 +24,45 @@ export class PropertyService {
 
    params = params.append("propertyType",searchProperty.propertyType)
 
-  return this.http.get(this.BASE_URL+'searchProperty',{params});
+  return this.http.get(this.BASE_URL+'property',{params});
   
   }
   addProperty(addProperty:any) {
     const credentials = sessionStorage.getItem('credentials');
     const token: any = JSON.parse(credentials||'{}')['accessToken'];
 
-    return this.http.post(this.BASE_URL+'addProperty',addProperty , {
+    return this.http.post(this.BASE_URL+'property',addProperty , {
       headers: {
-        Authorization: 'Bearer ' 
+        Authorization: 'Bearer ' + token
       }
     })
   }
 
-  deleteProperty(prop_id: any) {
+  deleteProperty(propertyId: any) {
     const credentials = sessionStorage.getItem('credentials');
     const token: any = JSON.parse(credentials||'{}')['accessToken'];
 
-    return this.http.post(this.BASE_URL+'addProperty' , {
+    return this.http.delete(this.BASE_URL+'property/'+propertyId, {
       headers: {
-        Authorization: 'Bearer ' 
+        Authorization: 'Bearer ' + token
       }
     })
   }
 
-  
-  
-  
+  updateProperty(updateProperty:any,propertyId:any){
+    const credentials = sessionStorage.getItem('credentials');
+    const token: any = JSON.parse(credentials||'{}')['accessToken'];
+
+    return this.http.put(this.BASE_URL+'propertyById',updateProperty, {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    })
+  }
+  getPropertyById(propertyId:any)
+  {
+return this.http.get(this.BASE_URL+'admin/propertyById/'+propertyId);
+  } 
   success()
 {
   return "success"

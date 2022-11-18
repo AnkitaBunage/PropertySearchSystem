@@ -10,30 +10,29 @@ import { UserAuthModule } from './user-auth/user-auth.module';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SignupComponent } from './user-auth/signup/signup.component';
 import { LoginComponent } from './user-auth/login/login.component';
-
-import { NormalUserComponent } from './normal-user/normal-user.component';
 import { AdminComponent } from './admin/admin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //import { SigninComponent } from './user-auth/signin/signin.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-import { EditPropertyComponent } from './edit-property/edit-property.component'; 
+import { EditPropertyComponent } from './edit-property/edit-property.component';
+import { RegularUserComponent } from './regular-user/regular-user.component'; 
 
 const routes:Route []= [
   {path:'signup', component:SignupComponent},
   {path:'login', component:LoginComponent},
-  {path:'normalUser', component:NormalUserComponent},
   {path:'admin', component:AdminComponent},
   {path:'login/signup', component:SignupComponent},
   {path:'admin/edit/:propertyId',component:EditPropertyComponent},
-  {path:'edit/:propertyId',component:EditPropertyComponent}
+  {path:'edit/:propertyId',component:EditPropertyComponent},
+  {path:'user', component:RegularUserComponent},
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    NormalUserComponent,
     AdminComponent,
-    EditPropertyComponent
+    EditPropertyComponent,
+    RegularUserComponent
   ],
   imports: [
     BrowserModule,

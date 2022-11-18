@@ -27,9 +27,9 @@ export class LoginComponent implements OnInit {
       (response:any)=>{ 
         console.log(response);
         sessionStorage.setItem('credentials', JSON.stringify(response));
-        localStorage.setItem('token',response.token);
+       
         if(response.roles[0]=="ROLE_USER"){
-          this.router.navigate(['normalUser']);
+          this.router.navigate(['user']);
         }
         else if(response.roles[0]=="ROLE_ADMIN"){
           this.router.navigate(['admin']);

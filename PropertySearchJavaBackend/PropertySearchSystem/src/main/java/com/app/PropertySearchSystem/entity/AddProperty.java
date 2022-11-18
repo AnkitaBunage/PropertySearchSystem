@@ -8,7 +8,14 @@ public class AddProperty {
 	private String ownerFirstName;
 	private String ownerLastName;
 	private String ownerEmail;
+	private int ownerId;
 	
+	public int getOwnerId() {
+		return ownerId;
+	}
+	public void setOwnerId(int ownerId) {
+		this.ownerId = ownerId;
+	}
 	public String getOwnerFirstName() {
 		return ownerFirstName;
 	}

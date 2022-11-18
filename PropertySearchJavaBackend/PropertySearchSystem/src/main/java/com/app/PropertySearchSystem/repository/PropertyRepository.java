@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.app.PropertySearchSystem.entity.AddProperty;
 import com.app.PropertySearchSystem.entity.Property;
 import com.app.PropertySearchSystem.entity.User;
 
@@ -29,6 +30,9 @@ public interface PropertyRepository extends JpaRepository<Property, Integer>{
 
 
 	List<Property> findPropertyByOwnerOwnerId(int ownerId);
+
+
+Property findByPropertyId(int id);
 	
 //	@Query("SELECT p from Property p  where ((:propAddress IS NULL) OR (:propAddress IS NOT NULL AND p.propertyAddress = :propAddress))\r\n"
 //			+ "	or ((:propType IS NULL) OR (:propType IS NOT NULL AND p.propertyType = :propType)) and p.propertyId in (\r\n"

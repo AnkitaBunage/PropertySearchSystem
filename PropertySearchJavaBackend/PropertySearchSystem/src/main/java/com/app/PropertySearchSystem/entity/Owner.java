@@ -112,7 +112,7 @@ private Set<Property> property;
 	}
 
 	public void setProperty(Set<Property> property) {
-		property = property;
+		this.property = property;
 	}
 
 }
