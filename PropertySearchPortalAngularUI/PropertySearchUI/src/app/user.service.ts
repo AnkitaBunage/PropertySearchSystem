@@ -19,7 +19,7 @@ export class UserService {
   
 loggedIn()
 {
-  return !!localStorage.getItem('token')
+  return !!sessionStorage.getItem('credentials')
 }
   logOutUser()
   {

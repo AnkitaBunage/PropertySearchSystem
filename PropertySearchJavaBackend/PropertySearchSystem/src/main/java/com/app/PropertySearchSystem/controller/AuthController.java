@@ -55,6 +55,8 @@ public class AuthController {
 
 	@Autowired
 	JwtUtils jwtUtils;
+	
+	private static final String roleError="Error: Role is not found.";
 
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -102,26 +104,26 @@ public class AuthController {
 
 		if (strRoles == null) {
 			Roles userRole = roleRepository.findByName(ERole.ROLE_USER)
-					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+					.orElseThrow(() -> new RuntimeException(roleError));
 			roles.add(userRole);
 		} else {
 			strRoles.forEach(role -> {
 				switch (role) {
 				case "ROLE_USER":
 					Roles readerRole = roleRepository.findByName(ERole.ROLE_USER)
-							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+							.orElseThrow(() -> new RuntimeException(roleError));
 					roles.add(readerRole);
 
 					break;
 				case "ROLE_ADMIN":
 					Roles authorRole = roleRepository.findByName(ERole.ROLE_ADMIN)
-							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+							.orElseThrow(() -> new RuntimeException(roleError));
 					roles.add(authorRole);
 
 					break;
 				default:
 					Roles userRole = roleRepository.findByName(ERole.ROLE_USER)
-							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+							.orElseThrow(() -> new RuntimeException(roleError));
 					roles.add(userRole);
 				}
 			});

@@ -5,6 +5,7 @@ import { PropertyService } from '../property.service';
 import { EscrowData, TaxStatusData } from '../models/taxStatusData';
 import { Observable } from 'rxjs';
 import { FormBuilder } from '@angular/forms';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-admin',
@@ -160,4 +161,6 @@ searchProperty(){
       )
  
    }
+
+  
 }
